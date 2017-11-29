@@ -28,6 +28,10 @@ repositories {
 	mavenCentral()
 }
 
+ext {
+    vaadinVersion = '8.1.0'
+}
+
 sourceSets {
 	integrationTest {
 		java {
@@ -76,10 +80,6 @@ dependencyManagement {
 jar {
 	baseName = 'space-shuttle-demo'
 	version = version
-}
-
-ext {
-	vaadinVersion = '8.1.0'
 }
 
 findbugs {
