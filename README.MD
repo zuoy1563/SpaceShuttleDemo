@@ -1,0 +1,1 @@
+This is a Spring Boot project regarding an online course system.
