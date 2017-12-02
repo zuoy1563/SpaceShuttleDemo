@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+    <script type="text/javascript" th:src="@{https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js}"></script>
+    <link th:href="@{https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link rel="icon" th:href="@{/images/favicon.ico}" type="image/x-icon"/>
+    <title>Course List</title>
+</head>
+<body>
+<div class="container">
+    <table class="table table-hover table-condensed">
+        <legend>
+            <strong>Course List</strong>
+        </legend>
+        <div><a th:href="@{/courses/create}" class="btn btn-primary">Create a Course</a></div>
+        <thead>
+        <tr>
+            <th>Course ID</th>
+            <th>Course Name</th>
+            <th>Course Description</th>
+            <th>Operations</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="course : ${coursesList}">
+            <th scope="row" th:text="${course.id}"></th>
+            <td><a th:href="@{/courses/update/{courseId}(courseId=${course.id})}" th:text="${course.name}"></a></td>
+            <td th:text="${course.description}"></td>
+            <td>
+                <a class="btn btn-primary" th:href="@{/courses/update/{courseId}(courseId=${course.id})}">Edit</a>
+                &nbsp;
+                <a class="btn btn-success" th:href="@{/courses/details/{courseId}(courseId=${course.id})}">Details</a>
+                &nbsp;
+                <a class="btn btn-danger" th:href="@{/courses/delete/{courseId}(courseId=${course.id})}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
