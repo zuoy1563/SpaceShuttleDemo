@@ -7,13 +7,14 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import spaceshuttle.demo.service.MyUserDetailsService;
+
 /*
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 */
-import spaceshuttle.demo.service.MyUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
@@ -61,6 +62,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 */
         http
                 .antMatcher("/home/**")
+                .antMatcher("/users/**")
+                .antMatcher("/courses/**")
                 .authorizeRequests()
                 .anyRequest().hasRole("user")
                 .and()
@@ -71,7 +74,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
-                .antMatchers("/home/index","/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
+                .antMatchers("/home/index", "/users/all", "/courses/all", "/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
     }
 
     @Autowired

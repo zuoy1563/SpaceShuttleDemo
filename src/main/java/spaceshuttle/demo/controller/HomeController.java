@@ -1,20 +1,20 @@
 package spaceshuttle.demo.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 @RequestMapping(path = "/home")
 public class HomeController {
     @GetMapping(path = "/index")
     public String index() {
-        return "Welcome all!";
+        return "index";
     }
 
     @GetMapping(path = "/my")
     public String my() {
-        return "Hello user!";
+        return "my";
     }
 
 }
